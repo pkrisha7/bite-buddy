@@ -1,67 +1,60 @@
-# Bite Buddy 
+# 🍔 Bite Buddy — Smart Food Delivery App
 
-A full-stack food delivery app built with the MERN stack, featuring real-time order tracking, Razorpay payments, and live delivery simulation.
+A full-stack food delivery web application built with the MERN stack, featuring real-time order tracking, Razorpay payment integration, and live delivery simulation on an interactive map.
 
-## Features
-- Restaurant listings with search and cuisine filter
-- Menu browsing with food images
-- Live cart with quantity management
-- Razorpay payment integration (test mode)
-- Real-time order status updates via Socket.io
-- Live delivery partner tracking on Leaflet map
-- JWT authentication with role-based access
-- Order history with status tracking
+> Built as a portfolio project targeting software development roles. Demonstrates high-traffic app patterns with payments, WebSockets, and real-time features — exactly what startups ask about.
 
-## Tech Stack
-**Frontend:** React, React Router, Axios, Socket.io-client, Leaflet.js
+---
 
-**Backend:** Node.js, Express.js, MongoDB, Mongoose, Socket.io
+## 🌐 Live Demo
 
-**Integrations:** Razorpay (payments), OpenStreetMap (maps), JWT (auth), bcrypt (password hashing)
+- **Frontend:** https://bite-buddy.vercel.app
+- **Backend API:** https://vercel.com/pkrisha7s-projects/bite-buddy-1msz/AjNpf35nVTorxRyJh8cjCg1YrKuJ
 
-## Architecture
-- REST API for auth, restaurants, orders
-- WebSocket rooms for real-time order updates
-- Payment verification via Razorpay signature matching
-- Delivery simulation with coordinate broadcasting
+---
 
+## ✨ Features
 
+- 🔐 JWT Authentication with role-based access (customer / restaurant owner / delivery partner)
+- 🍽️ Restaurant listings with search and cuisine filter
+- 📋 Menu browsing with food images per restaurant
+- 🛒 Live cart with quantity management and cross-restaurant conflict handling
+- 💳 Razorpay payment integration with webhook signature verification
+- 📦 Order placement and history tracking
+- 🔴 Real-time order status updates via Socket.io rooms
+- 🗺️ Live delivery partner tracking on interactive Leaflet map (OpenStreetMap)
+- 🛵 Delivery simulation with GPS coordinate broadcasting
+- 📱 Responsive UI built with React
 
-### Prerequisites
-- Node.js v18+
-- MongoDB Atlas account
-- Razorpay test account
+---
 
-### Backend Setup
-```bash
-cd server
-npm install
-```
-Create `.env` file:
-```
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-RAZORPAY_KEY_ID=your_razorpay_key_id
-RAZORPAY_KEY_SECRET=your_razorpay_key_secret
-```
-```bash
-npm run dev
-```
+## 🛠️ Tech Stack
 
-### Frontend Setup
-```bash
-cd client
-npm install
-npm start
-```
+### Frontend
+| Technology | Usage |
+|---|---|
+| React 18 | UI framework |
+| React Router v6 | Client-side routing |
+| Axios | HTTP requests |
+| Socket.io-client | Real-time communication |
+| Leaflet.js + React-Leaflet | Interactive maps |
+| Context API | Global state (auth + cart) |
 
+### Backend
+| Technology | Usage |
+|---|---|
+| Node.js + Express | REST API server |
+| MongoDB + Mongoose | Database and ODM |
+| Socket.io | WebSocket server |
+| JWT | Authentication tokens |
+| bcryptjs | Password hashing |
+| Razorpay SDK | Payment processing |
+| crypto (Node built-in) | Payment signature verification |
 
-- Implemented idempotent payment flow using Razorpay webhook signature verification
-- Used Socket.io rooms to broadcast order status only to relevant clients
-- Handled cross-restaurant cart conflicts with user confirmation
-- JWT middleware for role-based route protection
+### Deployment
+| Service | Usage |
+|---|---|
+| Vercel | Frontend hosting |
+| Render | Backend hosting |
+| MongoDB Atlas | Cloud database |
 
-
-## Author
-Krisha Pokharel
