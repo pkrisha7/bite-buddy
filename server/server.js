@@ -8,10 +8,15 @@ require('dotenv').config();
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
-    cors: { origin: 'http://localhost:3000', methods: ['GET', 'POST'] }
+    cors: {
+        origin: ['http://localhost:3000', 'https://vercel.com/pkrisha7s-projects/bite-buddy-1msz/9irMT4z1NUbBatxinPh9ssHNYi5k'],
+        methods: ['GET', 'POST']
+    }
 });
 
-app.use(cors());
+app.use(cors({
+    origin: ['http://localhost:3000', 'https://vercel.com/pkrisha7s-projects/bite-buddy-1msz/9irMT4z1NUbBatxinPh9ssHNYi5k']
+}));
 app.use(express.json());
 
 app.use('/api/auth', require('./routes/auth'));
