@@ -1,14 +1,14 @@
-# 🍔 Bite Buddy — Smart Food Delivery App
+# Bite Buddy — Smart Food Delivery App
 
 A full-stack food delivery web application built with the MERN stack, featuring real-time order tracking, Razorpay payment integration, and live delivery simulation on an interactive map.
 
-> Built as a portfolio project targeting software development roles. Demonstrates high-traffic app patterns with payments, WebSockets, and real-time features — exactly what startups ask about.
+
 
 ---
 
 ## 🌐 Live Demo
 
-- **Frontend:** https://bite-buddy.vercel.app
+- **Frontend:** https://bite-buddy-1msz.vercel.app
 - **Backend API:** https://vercel.com/pkrisha7s-projects/bite-buddy-1msz/AjNpf35nVTorxRyJh8cjCg1YrKuJ
 
 ---
