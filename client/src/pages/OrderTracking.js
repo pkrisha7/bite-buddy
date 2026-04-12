@@ -34,7 +34,7 @@ const homeIcon = new L.DivIcon({
     iconAnchor: [15, 15],
 });
 
-const socket = io('http://localhost:5000');
+const socket = io(process.env.REACT_APP_SOCKET_URL || 'http://localhost:5000');
 
 const STATUS_STEPS = ['placed', 'confirmed', 'preparing', 'out_for_delivery', 'delivered'];
 const STATUS_LABELS = {
@@ -178,9 +178,9 @@ const OrderTracking = () => {
         div style = { styles.statusText } > { STATUS_LABELS[status] } < /div> <
     div style = { styles.statusSub } > { status === 'placed' && 'Waiting for restaurant to confirm' } { status === 'confirmed' && 'Restaurant has confirmed your order' } { status === 'preparing' && 'Your food is being prepared' } { status === 'out_for_delivery' && 'Your order is on the way!' } { status === 'delivered' && 'Enjoy your meal!' } <
         /div> < /
-        div > <
+    div > <
         /div> < /
-        div >
+    div >
 
         {
             order && ( <
@@ -211,7 +211,7 @@ div style = { styles.mapLegend } >
     span > 🍽️Restaurant < /span> <
 span > 🛵Driver < /span> <
 span > 🏠Your location < /span> < /
-    div > <
+div > <
     MapContainer center = {
         [12.9716, 77.5946]
     }
@@ -227,17 +227,17 @@ attribution = '&copy; OpenStreetMap contributors' /
 icon = { restaurantIcon } >
     <
     Popup > Restaurant < /Popup> < /
-    Marker > <
+Marker > <
     Marker position = { DELIVERY_POS }
 icon = { homeIcon } >
     <
     Popup > Delivery Location < /Popup> < /
-    Marker > <
+Marker > <
     Marker position = { driverPos }
 icon = { driverIcon } >
     <
     Popup > Your delivery partner < /Popup> < /
-    Marker > <
+Marker > <
     MoveMap position = { driverPos }
 /> < /
 MapContainer > <
@@ -269,7 +269,7 @@ button style = { styles.driveBtn }
 onClick = { simulateDelivery }
 disabled = { simulating } > { simulating ? '🛵 Driver is on the way...' : '🛵 Simulate Driver Moving' } <
     /button> < /
-    div > <
+div > <
     /div>
 );
 };
