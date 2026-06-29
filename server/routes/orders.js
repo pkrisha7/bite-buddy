@@ -5,15 +5,26 @@ const crypto = require('crypto');
 const Order = require('../models/Order');
 const authMiddleware = require('../middleware/auth');
 
-const razorpay = new Razorpay({
-    key_id: process.env.RAZORPAY_KEY_ID,
-    key_secret: process.env.RAZORPAY_KEY_SECRET,
-});
+let razorpay = null;
+if (process.env.RAZORPAY_KEY_ID && process.env.RAZORPAY_KEY_SECRET) {
+    razorpay = new Razorpay({
+        key_id: process.env.RAZORPAY_KEY_ID,
+        key_secret: process.env.RAZORPAY_KEY_SECRET,
+    });
+} else {
+    console.warn('WARNING: Razorpay keys (RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET) are missing. Payment features will not work.');
+}
 
 // Create order + Razorpay payment order
 router.post('/', authMiddleware, async(req, res) => {
     try {
         const { restaurantId, items, totalAmount, deliveryAddress } = req.body;
+
+        if (!razorpay) {
+            return res.status(400).json({ 
+                message: 'Payment gateway not configured. Please set RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET in backend environment.' 
+            });
+        }
 
         const razorpayOrder = await razorpay.orders.create({
             amount: totalAmount * 100,
